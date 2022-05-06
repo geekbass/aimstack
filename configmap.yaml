@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aimstack
+  namespace: aimstack
+  labels:
+    app: aimstack
+data:
+  AIM_REPO: "/aimstack"
+  AIM_WORKERS: "2"
+

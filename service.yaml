@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aimstack
+  namespace: aimstack
+spec:
+  selector:
+    app: aimstack
+  ports:
+    - protocol: TCP
+      port: 53800
+      targetPort: 53800
+      name: server
+    - protocol: TCP
+      port: 80
+      targetPort: 43800
+      name: ui

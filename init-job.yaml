@@ -1,0 +1,33 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: aimstack-initialize
+  namespace: aimstack
+  labels:
+    app: aimstack-initialize
+spec:
+  template:
+    spec:
+      containers:
+        - name: initialize
+          image: aimstack:0.0.1
+          args: ["mkdir -pv $(AIM_REPO) && aim init --repo $(AIM_REPO)"]
+          resources:
+            limits:
+              cpu: 200m
+              memory: 250Mi
+            requests:
+              cpu: 200m
+              memory: 250Mi
+          envFrom:
+            - configMapRef:
+                name: aimstack
+          volumeMounts:
+            - mountPath: /aimstack
+              name: aim-runs
+      volumes:
+        - name: aim-runs
+          hostPath:
+            path: /data
+      restartPolicy: Never
+  backoffLimit: 4
