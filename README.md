@@ -1,12 +1,17 @@
 # Aimstack for ML Experiment Tracking
 This repo is used as a method of testing and documenting [Aimstack](https://aimstack.io/) usage. A custom bash script is provided to use locally in Kind Cluster. Here we deploy both the Aimstack UI and the Remote Tracking capabilities on KinD. 
 
+*NOTE:* The following has only tested on a Mac.
+
 ### Prereqs
-- Docker Desktop
-- KinD
-- Kubectl
-- Kustomize
-- Python 3.9+
+ - [KinD](https://kind.sigs.k8s.io/)
+
+ - [Docker Desktop](https://www.docker.com/)
+ 
+ - [Kubectl CLI](https://kubernetes.io/docs/tasks/tools/#kubectl)
+
+ - [Kustomize CLI](https://kustomize.io)
+ - Python 3.9+
 
 ### Getting Started with Kind
 As mentioned a simple script has been provided:
