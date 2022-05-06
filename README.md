@@ -1,5 +1,5 @@
 # Aimstack for ML Experiment Tracking
-This repo is used as a method of testing and documenting [Aimstack](https://aimstack.io/) usage. A custom bash script is provided to use locally in Kind Cluster. Here we deploy both the Aimstack UI and the Remote Tracking capabilities on KinD. 
+This repo is used as a method of testing and documenting [Aimstack](https://aimstack.io/) usage. A custom bash script is provided to use locally in [KinD](https://kind.sigs.k8s.io/) (Kubernetes-in-Docker) Cluster. Here we deploy both the Aimstack UI and the Remote Tracking capabilities on KinD. 
 
 *NOTE:* The following has only tested on a Mac.
 
@@ -12,8 +12,16 @@ This repo is used as a method of testing and documenting [Aimstack](https://aims
 
  - [Kustomize CLI](https://kustomize.io)
  - Python 3.9+
+ 
+### Python Usage
+Use the following to create a virtual environment to begin using the [Aim SDK](https://aimstack.readthedocs.io/en/latest/refs/sdk.html). A requirements file has been added to make it easier to add additional packages for local development and to test on the Aimstack Server/UI. 
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-### Getting Started with Kind
+## Getting Started with Kind
 As mentioned a simple script has been provided:
 ```
 bash deploy-kind.sh
@@ -23,15 +31,6 @@ This script handles the necessary steps for:
 - deploying a KinD Cluster 
 - building an aimstack Docker image 
 - deploying the actual Aimstack Server and UI
-
-### Python Usage
-Use the following to create a virtual environment to begin using the [Aim SDK](https://aimstack.readthedocs.io/en/latest/refs/sdk.html).
-```
-python3 -m venv venv
-source venv/bin/activate
-pip install aim==3.9.2
-```
-
 ### Using Aimstack Remote Tracking Server
 Using our KinD cluster we do not tie to an Ingress so we need to use the `port-forward` from our `kubectl`. In this environment we need to have port forwarding to the server on to use Remote Tracking. Use the following in your terminal to reach Aimstack Server for Remote Tracking.
 ```

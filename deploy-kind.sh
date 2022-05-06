@@ -58,7 +58,7 @@ if [[ `kind get clusters | grep ${CLUSTER_NAME}` == "" ]]; then
   # Deploy Argo CD
   echo "###########################################################"
   echo "Building the Aimstack image..."
-  docker build -t aimstack.0.01.1 .
+  docker build -t aimstack:0.0.1 .
   sleep 3
 
   # Load the image to Kind cluster
