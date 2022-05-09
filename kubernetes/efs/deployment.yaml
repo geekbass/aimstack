@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aimstack
+  namespace: aimstack
+spec:
+  template:
+    spec:
+      containers:
+      - image: aimstack
+        name: server
+        volumeMounts:
+          - mountPath: /aimstack
+            name: aimstack-runs
+      - image: aimstack
+        name: ui
+        volumeMounts:
+          - mountPath: /aimstack
+            name: aimstack-runs
+      volumes:
+        - name: aimstack-runs
+          persistentVolumeClaim:
+            claimName: efs-aimstack
+        - $patch: delete
+          name: aim-runs

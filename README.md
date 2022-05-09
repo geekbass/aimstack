@@ -1,7 +1,8 @@
 # Aimstack for ML Experiment Tracking
-This repo is used as a method of testing and documenting [Aimstack](https://aimstack.io/) usage. A custom bash script is provided to use locally in [KinD](https://kind.sigs.k8s.io/) (Kubernetes-in-Docker) Cluster. Here we deploy both the Aimstack UI and the Remote Tracking capabilities on KinD. 
+This repo is used as a method of testing and documenting [Aimstack](https://aimstack.io/) usage. A custom bash script is provided to use locally in [KinD](https://kind.sigs.k8s.io/) (Kubernetes-in-Docker) Cluster. Here we deploy both the Aimstack UI and the Remote Tracking capabilities on KinD. *The following has only tested on a Mac.*
 
-*NOTE:* The following has only tested on a Mac.
+*NOTE:* We will be using Remote Tracking method when writing to Aim. 
+
 
 ### Prereqs
  - [KinD](https://kind.sigs.k8s.io/)
@@ -61,12 +62,22 @@ Then go to your favorite browser to: [http://locahost:8080](http://locahost:8080
 *NOTE:* CTRL+C kills port forwarding.
 
 ## Real World Usage for K8s
-COMING SOON
+You may find different examples of deploying to Kubernetes within the `./kubernetes/` folder of this repo. Per the Docs, it is important to remember the importance of shared storage. You can host or share Aim anywhere that you can share the storage such as NFS or other kind of volume. We have chosen to use EFS so that we can have a volume in which can be distributed while also being multiple read/write operations at once. Please keep in mind that even though we are sharing the data on EFS, we will be using Remote tracking capabilities when writing to Aim whether it be from a local laptop, a Jupyterhub notebook running within the same Kubernetes cluster, etc...
+
+We will be utilizing this repo and different release versions as the base of our deployment and how we manage our deployments to Kubernetes. This allows for us to use this repo as a basic template utilizing Kustomize.
+
+Ingress is left out intentionally and it is the users responsibility to supply.
+
 
 ### Deploying with Kustomize
+For now we support using Kustomize for deploying and managing this stack. If we get any/enough interest for different varieties we could also build a Helm Chart.
+
 
 ### Managing with ArgoCD
 
 ### Using with Jupyterhub
+
+### DockerHub
+Public Docker images can be found [here](https://hub.docker.com/repository/docker/wbassler/aimstack).
 
 ## Evaluating Runs

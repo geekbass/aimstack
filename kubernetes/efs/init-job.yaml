@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: aimstack-initialize
+  namespace: aimstack
+spec:
+  template:
+    spec:
+      containers:
+      - image: aimstack
+        name: initialize
+        volumeMounts:
+          - mountPath: /aimstack
+            name: aimstack-runs
+      restartPolicy: Never
+      volumes:
+      - name: aimstack-runs
+        persistentVolumeClaim:
+          claimName: efs-aimstack
+      - $patch: delete
+        name: aim-runs

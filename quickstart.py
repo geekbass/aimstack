@@ -19,8 +19,10 @@ while train_run <= 5:
     # log some metrics
     random_int = random.randint(2000, 5000)
     random_int2 = random.randint(2, 10)
+    random_int3 = random.randint(1, 500)
     run.track(random_int, name="metric_1")
     run.track(random_int2, name="metric_2")
+    run.track(random_int3, name="metric_3")
 
     train_run += 1
 
